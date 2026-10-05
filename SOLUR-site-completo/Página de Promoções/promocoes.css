@@ -1,0 +1,86 @@
+/* =====================================================
+   SOLUR — PÁGINA DE PROMOÇÕES
+   ===================================================== */
+
+.hero-promo {
+    text-align: center;
+    padding: 70px 20px 55px;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.94)),
+        url("../Imagens/banner.png") center / cover no-repeat;
+    border-bottom: 1px solid var(--borda);
+}
+
+.hero-promo-selo {
+    display: inline-block;
+    background: var(--sangue);
+    color: var(--branco);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    padding: 7px 16px;
+    border-radius: 3px;
+    margin-bottom: 22px;
+}
+
+.hero-promo h1 {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(34px, 5vw, 54px);
+    letter-spacing: 12px;
+    margin-bottom: 14px;
+}
+
+.hero-promo p {
+    color: var(--suave);
+    font-size: 15px;
+}
+
+.hero-promo strong {
+    color: var(--branco);
+}
+
+
+/* FAIXA DE CUPOM */
+
+.faixa-cupom {
+    max-width: 1250px;
+    margin: 40px auto 0;
+    padding: 26px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    border: 1px dashed var(--borda-forte);
+    border-radius: 10px;
+    background: var(--superficie);
+}
+
+.faixa-cupom h2 {
+    font-family: var(--fonte-titulo);
+    font-size: 20px;
+    letter-spacing: 3px;
+    margin-bottom: 4px;
+}
+
+.faixa-cupom h2 strong {
+    color: var(--branco);
+    background: var(--sangue);
+    padding: 2px 10px;
+    border-radius: 4px;
+    margin-left: 6px;
+}
+
+.faixa-cupom p {
+    color: var(--suave);
+    font-size: 13px;
+}
+
+@media (max-width: 820px) {
+    .faixa-cupom {
+        margin-left: 18px;
+        margin-right: 18px;
+        justify-content: center;
+        text-align: center;
+    }
+}

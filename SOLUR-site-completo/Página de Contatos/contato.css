@@ -1,0 +1,185 @@
+/* =====================================================
+   SOLUR — PÁGINA DE CONTATO
+   ===================================================== */
+
+.suporte {
+    text-align: center;
+    padding: 65px 20px 45px;
+    background:
+        radial-gradient(ellipse at center, rgba(255, 255, 255, 0.045), transparent 65%),
+        #000;
+    border-bottom: 1px solid var(--borda);
+}
+
+.suporte h1 {
+    font-family: var(--fonte-titulo);
+    font-size: clamp(26px, 4vw, 38px);
+    letter-spacing: 6px;
+    margin-bottom: 12px;
+}
+
+.suporte > p {
+    color: var(--suave);
+    margin-bottom: 28px;
+}
+
+.suporte input {
+    width: 440px;
+    max-width: 90%;
+    padding: 15px 24px;
+    border-radius: 30px;
+    border: 1px solid var(--borda);
+    background-color: #161616;
+    color: var(--texto);
+    outline: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.suporte input:focus {
+    border-color: var(--borda-forte);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.06);
+}
+
+
+/* CANAIS */
+
+.grade-canais {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.card-canal {
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    padding: 32px 26px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card-canal:hover {
+    transform: translateY(-5px);
+    border-color: var(--borda-forte);
+}
+
+.canal-icone {
+    font-size: 26px;
+    display: block;
+    margin-bottom: 14px;
+    color: var(--prata);
+}
+
+.card-canal h3 {
+    font-family: var(--fonte-titulo);
+    font-size: 15px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+}
+
+.card-canal p {
+    color: var(--suave);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+
+/* FORMULÁRIO */
+
+.secao-formulario {
+    max-width: 760px;
+}
+
+.formulario-contato {
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    padding: 34px;
+}
+
+.duas-colunas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.formulario-contato .botao {
+    width: 100%;
+}
+
+.formulario-retorno {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 14px;
+    min-height: 20px;
+    color: #9fdf9f;
+}
+
+
+/* FAQ */
+
+.secao-faq {
+    border-top: 1px solid var(--borda);
+}
+
+.faq {
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.pergunta {
+    background-color: var(--superficie);
+    padding: 24px 26px;
+    border-radius: 10px;
+    border: 1px solid var(--borda);
+    border-left: 3px solid var(--borda-forte);
+    transition: 0.3s;
+}
+
+.pergunta:hover {
+    border-left-color: var(--branco);
+    transform: translateX(4px);
+}
+
+.pergunta h3 {
+    margin-top: 0;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.pergunta p {
+    color: #bdbdbd;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.faq-vazia {
+    text-align: center;
+    color: var(--suave);
+    padding: 30px;
+    border: 1px dashed var(--borda);
+    border-radius: 10px;
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width: 820px) {
+    .grade-canais {
+        grid-template-columns: 1fr;
+    }
+
+    .duas-colunas {
+        grid-template-columns: 1fr;
+    }
+
+    .formulario-contato {
+        padding: 24px 18px;
+    }
+}

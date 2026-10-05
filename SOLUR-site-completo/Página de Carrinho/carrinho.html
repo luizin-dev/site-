@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sua sacola SOLUR: revise itens, aplique cupons e finalize a compra.">
+    <title>Minha sacola — SOLUR</title>
+
+    <link rel="icon" type="image/jpeg" href="../Imagens/WhatsApp Image 2026-05-28 at 08.02.10.jpeg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="carrinho.css">
+</head>
+
+<body>
+
+    <!-- BARRA SUPERIOR -->
+    <div class="barra-topo">
+        Frete grátis para todo o Brasil &nbsp;•&nbsp; Parcele em até 3x sem juros
+    </div>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <a class="logo-link" href="../Página de Início/inicio.html">
+            <img src="../Imagens/WhatsApp Image 2026-05-28 at 08.02.10.jpeg" alt="Logo SOLUR">
+            <span class="logo-nome">SOLUR</span>
+        </a>
+
+        <form class="campo-busca" role="search">
+            <input type="text" placeholder="O que você procura nas trevas?" aria-label="Pesquisar produtos">
+            <button type="submit" aria-label="Pesquisar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="18" height="18"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            </button>
+        </form>
+
+        <div class="acoes-header">
+            <a class="acao-header" href="../Página de Produtos/produtos.html?filtro=favoritos" aria-label="Ver favoritos">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7-4.6-9.2-8.6C1.2 8.5 3 5 6.5 5c2 0 3.4 1.1 4.2 2.4h2.6C14.1 6.1 15.5 5 17.5 5 21 5 22.8 8.5 21.2 11.4 19 15.4 12 20 12 20Z"/></svg>
+                <span class="badge" id="badgeFavoritos" hidden>0</span>
+            </a>
+
+            <button class="acao-header" onclick="abrirDrawer()" aria-label="Abrir sacola de compras">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 14H5L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0v3H9V7Z"/></svg>
+                <span class="badge" id="badgeCarrinho" hidden>0</span>
+            </button>
+
+            <button class="botao-menu-mobile" id="botaoMenuMobile" aria-label="Abrir menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- MENU -->
+    <nav class="menu">
+        <a href="../Página de Início/inicio.html">INÍCIO</a>
+        <a href="../Página de Produtos/produtos.html">PRODUTOS</a>
+        <a href="../Página de Promoções/promocoes.html">PROMOÇÕES</a>
+        <a href="../Página de Contatos/contato.html">CONTATO</a>
+    </nav>
+
+    <!-- ETAPAS -->
+    <div class="etapas" id="etapas">
+        <span class="etapa ativa" data-etapa="1">1. SACOLA</span>
+        <span class="etapa-linha"></span>
+        <span class="etapa" data-etapa="2">2. ENTREGA E PAGAMENTO</span>
+        <span class="etapa-linha"></span>
+        <span class="etapa" data-etapa="3">3. CONFIRMAÇÃO</span>
+    </div>
+
+    <!-- ETAPA 1: SACOLA -->
+    <main class="secao pagina-sacola" id="etapaSacola">
+
+        <div class="sacola-itens" id="listaItens"></div>
+
+        <aside class="resumo">
+            <h2>RESUMO DO PEDIDO</h2>
+
+            <div class="cupom-area">
+                <label for="inputCupom">Cupom de desconto</label>
+                <div class="cupom-linha">
+                    <input type="text" id="inputCupom" placeholder="Ex.: SOLUR10">
+                    <button class="botao-fantasma" onclick="aplicarCupomInterface()">APLICAR</button>
+                </div>
+                <p class="cupom-status" id="cupomStatus"></p>
+            </div>
+
+            <div class="linha-total"><span>Subtotal</span><span id="resumoSubtotal">R$ 0,00</span></div>
+            <div class="linha-total" id="linhaDesconto" hidden><span>Desconto</span><span id="resumoDesconto">- R$ 0,00</span></div>
+            <div class="linha-total"><span>Frete</span><span>GRÁTIS</span></div>
+            <div class="linha-total forte"><span>Total</span><span id="resumoTotal">R$ 0,00</span></div>
+
+            <button class="botao" id="botaoContinuar" onclick="irParaCheckout()">CONTINUAR</button>
+            <a class="link-discreto" href="../Página de Produtos/produtos.html">← continuar comprando</a>
+        </aside>
+
+    </main>
+
+    <!-- ETAPA 2: CHECKOUT -->
+    <main class="secao pagina-checkout" id="etapaCheckout" hidden>
+
+        <form class="checkout-form" id="formCheckout" novalidate>
+
+            <fieldset>
+                <legend>DADOS DE ENTREGA</legend>
+
+                <div class="campo">
+                    <label for="nomeCompleto">Nome completo</label>
+                    <input type="text" id="nomeCompleto" placeholder="Como no documento" required>
+                    <span class="erro-campo">Informe seu nome completo.</span>
+                </div>
+
+                <div class="duas-colunas">
+                    <div class="campo">
+                        <label for="emailCheckout">E-mail</label>
+                        <input type="email" id="emailCheckout" placeholder="voce@email.com" required>
+                        <span class="erro-campo">E-mail inválido.</span>
+                    </div>
+
+                    <div class="campo">
+                        <label for="telefoneCheckout">WhatsApp</label>
+                        <input type="tel" id="telefoneCheckout" placeholder="(11) 90000-0000" required>
+                        <span class="erro-campo">Informe um telefone com DDD.</span>
+                    </div>
+                </div>
+
+                <div class="duas-colunas">
+                    <div class="campo">
+                        <label for="cepCheckout">CEP</label>
+                        <input type="text" id="cepCheckout" placeholder="00000-000" maxlength="9" required>
+                        <span class="erro-campo">CEP inválido.</span>
+                    </div>
+
+                    <div class="campo">
+                        <label for="cidadeCheckout">Cidade</label>
+                        <input type="text" id="cidadeCheckout" placeholder="Sua cidade" required>
+                        <span class="erro-campo">Informe a cidade.</span>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="enderecoCheckout">Endereço e número</label>
+                    <input type="text" id="enderecoCheckout" placeholder="Rua, número, complemento" required>
+                    <span class="erro-campo">Informe o endereço completo.</span>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>PAGAMENTO</legend>
+
+                <div class="pagamento-opcoes">
+                    <label class="opcao-pagamento">
+                        <input type="radio" name="pagamento" value="pix" checked>
+                        <span>
+                            <strong>PIX</strong>
+                            <em>aprovação imediata • 5% off</em>
+                        </span>
+                    </label>
+
+                    <label class="opcao-pagamento">
+                        <input type="radio" name="pagamento" value="cartao">
+                        <span>
+                            <strong>CARTÃO</strong>
+                            <em>até 3x sem juros</em>
+                        </span>
+                    </label>
+
+                    <label class="opcao-pagamento">
+                        <input type="radio" name="pagamento" value="boleto">
+                        <span>
+                            <strong>BOLETO</strong>
+                            <em>compensa em 1-2 dias úteis</em>
+                        </span>
+                    </label>
+                </div>
+
+                <div class="campo" id="campoParcelas" hidden>
+                    <label for="parcelasCheckout">Parcelamento</label>
+                    <select id="parcelasCheckout"></select>
+                </div>
+            </fieldset>
+
+            <div class="checkout-acoes">
+                <button type="button" class="botao-fantasma" onclick="voltarParaSacola()">VOLTAR</button>
+                <button type="submit" class="botao" id="botaoFinalizar">FINALIZAR PEDIDO</button>
+            </div>
+
+        </form>
+
+        <aside class="resumo">
+            <h2>RESUMO DO PEDIDO</h2>
+            <div id="resumoItensCheckout"></div>
+            <div class="linha-total"><span>Subtotal</span><span id="resumoSubtotal2">R$ 0,00</span></div>
+            <div class="linha-total" id="linhaDesconto2" hidden><span>Desconto</span><span id="resumoDesconto2">- R$ 0,00</span></div>
+            <div class="linha-total" id="linhaPix2" hidden><span>Desconto PIX (5%)</span><span id="resumoPix2">- R$ 0,00</span></div>
+            <div class="linha-total"><span>Frete</span><span>GRÁTIS</span></div>
+            <div class="linha-total forte"><span>Total</span><span id="resumoTotal2">R$ 0,00</span></div>
+        </aside>
+
+    </main>
+
+    <!-- ETAPA 3: CONFIRMAÇÃO -->
+    <main class="secao pagina-confirmacao" id="etapaConfirmacao" hidden>
+        <div class="confirmacao-card">
+            <span class="confirmacao-simbolo">†</span>
+            <h1>PEDIDO CONFIRMADO</h1>
+            <p class="confirmacao-numero">Pedido <strong id="numeroPedido">#0000</strong></p>
+            <p>
+                O ritual foi concluído. Você receberá o código de rastreio
+                por e-mail assim que o pacote deixar o covil.
+            </p>
+            <div class="confirmacao-acoes">
+                <a class="botao" href="../Página de Produtos/produtos.html">CONTINUAR COMPRANDO</a>
+                <a class="botao-fantasma" href="../Página de Início/inicio.html">VOLTAR AO INÍCIO</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <div class="rodape-grade">
+            <div class="rodape-coluna">
+                <img class="rodape-logo" src="../Imagens/WhatsApp Image 2026-05-28 at 08.02.10.jpeg" alt="SOLUR">
+                <p>
+                    Moda dark, goth e streetwear com identidade.
+                    Projeto desenvolvido nas aulas de Desenvolvimento de Sistemas.
+                </p>
+            </div>
+
+            <div class="rodape-coluna">
+                <h3>Navegação</h3>
+                <ul>
+                    <li><a href="../Página de Início/inicio.html">Início</a></li>
+                    <li><a href="../Página de Produtos/produtos.html">Produtos</a></li>
+                    <li><a href="../Página de Promoções/promocoes.html">Promoções</a></li>
+                    <li><a href="../Página de Carrinho/carrinho.html">Minha sacola</a></li>
+                </ul>
+            </div>
+
+            <div class="rodape-coluna">
+                <h3>Ajuda</h3>
+                <ul>
+                    <li><a href="../Página de Contatos/contato.html">Fale conosco</a></li>
+                    <li><a href="../Página de Contatos/contato.html#faq">Perguntas frequentes</a></li>
+                    <li><a href="../Página de Contatos/contato.html#faq">Trocas e devoluções</a></li>
+                </ul>
+            </div>
+
+            <div class="rodape-coluna">
+                <h3>Atendimento</h3>
+                <p>
+                    Segunda a sexta, das 9h às 18h<br>
+                    contato@solur.com.br<br>
+                    WhatsApp (11) 90000-0000
+                </p>
+            </div>
+        </div>
+
+        <div class="rodape-base">
+            <p>
+                © <span data-ano>2026</span> SOLUR — Escola Professor João Prado Margarido
+                • Projeto escolar, sem fins comerciais.
+            </p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/dados.js"></script>
+    <script src="../assets/js/carrinho.js"></script>
+    <script src="../assets/js/global.js"></script>
+    <script src="carrinho.js"></script>
+</body>
+
+</html>

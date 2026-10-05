@@ -1,0 +1,330 @@
+/* =====================================================
+   SOLUR — PÁGINA DE COMPRA
+   ===================================================== */
+
+/* TRILHA */
+
+.trilha {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 20px 30px 0;
+    font-size: 12px;
+    color: #7c7c7c;
+    letter-spacing: 1px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.trilha a {
+    color: var(--suave);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.trilha a:hover {
+    color: var(--branco);
+}
+
+.trilha em {
+    color: var(--texto);
+    font-style: normal;
+}
+
+
+/* LAYOUT */
+
+.pagina-compra {
+    max-width: 1250px;
+    margin: 30px auto 0;
+    padding: 0 30px;
+    display: flex;
+    gap: 55px;
+    align-items: flex-start;
+}
+
+
+/* GALERIA */
+
+.galeria {
+    width: 55%;
+    display: flex;
+    gap: 18px;
+    position: sticky;
+    top: 95px;
+}
+
+.miniaturas {
+    width: 84px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.miniaturas img {
+    width: 84px;
+    height: 96px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid var(--borda);
+    cursor: pointer;
+    transition: 0.3s;
+    opacity: 0.7;
+}
+
+.miniaturas img:hover {
+    opacity: 1;
+    border-color: var(--borda-forte);
+}
+
+.miniaturas img.selecionada {
+    border-color: var(--branco);
+    opacity: 1;
+}
+
+.foto-principal {
+    flex: 1;
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.foto-principal .selo {
+    top: 16px;
+    left: 16px;
+    font-size: 12px;
+    padding: 7px 12px;
+    z-index: 2;
+}
+
+.foto-principal img {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+}
+
+
+/* INFORMAÇÕES */
+
+.informacoes {
+    width: 45%;
+}
+
+.categoria {
+    color: #8a8a8a;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.informacoes h1 {
+    font-family: var(--fonte-titulo);
+    font-size: 30px;
+    letter-spacing: 2px;
+    line-height: 1.3;
+    margin-bottom: 16px;
+}
+
+.linha-preco {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.informacoes h2 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.preco-antigo {
+    color: #7c7c7c;
+    text-decoration: line-through;
+    font-size: 16px;
+}
+
+.parcelamento {
+    color: var(--suave);
+    font-size: 13px;
+    margin-top: 6px;
+    margin-bottom: 20px;
+}
+
+.descricao {
+    color: #c7c7c7;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 24px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--borda);
+    margin: 26px 0;
+}
+
+
+/* TAMANHOS */
+
+.area-tamanhos,
+.area-quantidade {
+    margin-bottom: 22px;
+}
+
+.area-tamanhos > p,
+.area-quantidade > p {
+    color: var(--suave);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.tamanhos {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tamanhos button {
+    min-width: 50px;
+    height: 46px;
+    padding: 0 12px;
+    background: transparent;
+    color: var(--prata);
+    border: 1px solid var(--borda-forte);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.tamanhos button:hover {
+    border-color: var(--branco);
+    color: var(--branco);
+}
+
+.tamanhos button.selecionado {
+    background: var(--branco);
+    color: var(--preto);
+    border-color: var(--branco);
+}
+
+
+/* QUANTIDADE */
+
+.controle-qtd.grande button {
+    width: 42px;
+    height: 44px;
+    font-size: 18px;
+}
+
+.controle-qtd.grande span {
+    min-width: 44px;
+    font-size: 15px;
+}
+
+
+/* AÇÕES */
+
+.acoes-compra {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+}
+
+.acoes-compra .botao,
+.acoes-compra .botao-fantasma {
+    flex: 1;
+    min-width: 190px;
+}
+
+.botao-favorito {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--suave);
+    font-size: 12px;
+    letter-spacing: 2px;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botao-favorito:hover {
+    color: var(--branco);
+}
+
+.botao-favorito.favorito {
+    color: var(--sangue);
+    font-weight: 700;
+}
+
+.garantias {
+    list-style: none;
+    margin-top: 26px;
+    border-top: 1px solid var(--borda);
+    padding-top: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.garantias li {
+    color: var(--suave);
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+
+/* RELACIONADOS */
+
+.secao-relacionados {
+    border-top: 1px solid var(--borda);
+    margin-top: 70px;
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width: 900px) {
+    .pagina-compra {
+        flex-direction: column;
+        gap: 30px;
+        padding: 0 18px;
+    }
+
+    .galeria {
+        width: 100%;
+        position: static;
+    }
+
+    .informacoes {
+        width: 100%;
+    }
+
+    .foto-principal img {
+        height: 440px;
+    }
+}
+
+@media (max-width: 560px) {
+    .galeria {
+        flex-direction: column-reverse;
+    }
+
+    .miniaturas {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .foto-principal img {
+        height: 380px;
+    }
+}

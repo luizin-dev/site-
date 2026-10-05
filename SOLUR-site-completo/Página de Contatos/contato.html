@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fale com a SOLUR: dúvidas, trocas, pedidos e atendimento por WhatsApp, e-mail ou formulário.">
+    <title>Contato — SOLUR</title>
+
+    <link rel="icon" type="image/jpeg" href="../Imagens/WhatsApp Image 2026-05-28 at 08.02.10.jpeg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/global.css">
+    <link rel="stylesheet" href="contato.css">
+</head>
+
+<body>
+
+    <!-- BARRA SUPERIOR -->
+    <div class="barra-topo">
+        Precisa de ajuda? Estamos aqui por você
+    </div>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <a class="logo-link" href="../Página de Início/inicio.html">
+            <img src="../Imagens/WhatsApp Image 2026-05-28 at 08.02.10.jpeg" alt="Logo SOLUR">
+            <span class="logo-nome">SOLUR</span>
+        </a>
+
+        <form class="campo-busca" role="search">
+            <input type="text" placeholder="O que você procura nas trevas?" aria-label="Pesquisar produtos">
+            <button type="submit" aria-label="Pesquisar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" width="18" height="18"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            </button>
+        </form>
+
+        <div class="acoes-header">
+            <a class="acao-header" href="../Página de Produtos/produtos.html?filtro=favoritos" aria-label="Ver favoritos">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7-4.6-9.2-8.6C1.2 8.5 3 5 6.5 5c2 0 3.4 1.1 4.2 2.4h2.6C14.1 6.1 15.5 5 17.5 5 21 5 22.8 8.5 21.2 11.4 19 15.4 12 20 12 20Z"/></svg>
+                <span class="badge" id="badgeFavoritos" hidden>0</span>
+            </a>
+
+            <button class="acao-header" onclick="abrirDrawer()" aria-label="Abrir sacola de compras">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 14H5L6 7Z"/><path d="M9 7a3 3 0 0 1 6 0v3H9V7Z"/></svg>
+                <span class="badge" id="badgeCarrinho" hidden>0</span>
+            </button>
+
+            <button class="botao-menu-mobile" id="botaoMenuMobile" aria-label="Abrir menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- MENU -->
+    <nav class="menu">
+        <a href="../Página de Início/inicio.html">INÍCIO</a>
+        <a href="../Página de Produtos/produtos.html">PRODUTOS</a>
+        <a href="../Página de Promoções/promocoes.html">PROMOÇÕES</a>
+        <a href="../Página de Contatos/contato.html" class="ativo">CONTATO</a>
+    </nav>
+
+    <!-- ABERTURA -->
+    <section class="suporte">
+        <h1>COMO PODEMOS TE AJUDAR?</h1>
+        <p>Busque uma dúvida frequente ou fale direto com o clã.</p>
+
+        <input
+            type="text"
+            id="pesquisaFaq"
+            placeholder="Digite sua dúvida..."
+            onkeyup="filtrarFAQ()"
+            aria-label="Pesquisar nas perguntas frequentes"
+        >
+    </section>
+
+    <!-- CANAIS -->
+    <section class="secao secao-canais">
+        <div class="grade-canais">
+            <div class="card-canal">
+                <span class="canal-icone">✆</span>
+                <h3>WHATSAPP</h3>
+                <p>(11) 90000-0000<br>Seg a sex, 9h às 18h</p>
+            </div>
+
+            <div class="card-canal">
+                <span class="canal-icone">✉</span>
+                <h3>E-MAIL</h3>
+                <p>contato@solur.com.br<br>Respondemos em até 24h</p>
+            </div>
+
+            <div class="card-canal">
+                <span class="canal-icone">✧</span>
+                <h3>REDES SOCIAIS</h3>
+                <p>@solur.oficial<br>Bastidores e lançamentos</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULÁRIO -->
+    <section class="secao secao-formulario" id="contato">
+        <div class="titulo-secao">
+            <h2>Envie uma mensagem</h2>
+            <p>Retornamos em até 1 dia útil</p>
+        </div>
+
+        <form class="formulario-contato" id="formContato" novalidate>
+            <div class="duas-colunas">
+                <div class="campo">
+                    <label for="nomeContato">Nome</label>
+                    <input type="text" id="nomeContato" placeholder="Seu nome" required>
+                    <span class="erro-campo">Informe seu nome.</span>
+                </div>
+
+                <div class="campo">
+                    <label for="emailContato">E-mail</label>
+                    <input type="email" id="emailContato" placeholder="voce@email.com" required>
+                    <span class="erro-campo">E-mail inválido.</span>
+                </div>
+            </div>
+
+            <div class="campo">
+                <label for="assuntoContato">Assunto</label>
+                <select id="assuntoContato" required>
+                    <option value="">Selecione...</option>
+                    <option value="pedido">Dúvida sobre pedido</option>
+                    <option value="troca">Trocas e devoluções</option>
+                    <option value="produto">Dúvida sobre produto</option>
+                    <option value="outro">Outro assunto</option>
+                </select>
+                <span class="erro-campo">Escolha um assunto.</span>
+            </div>
+
+            <div class="campo">
+                <label for="mensagemContato">Mensagem</label>
+                <textarea id="mensagemContato" rows="5" placeholder="Conte para a gente o que está acontecendo..." required></textarea>
+                <span class="erro-campo">Escreva sua mensagem (mínimo 10 caracteres).</span>
+            </div>
+
+            <button type="submit" class="botao">ENVIAR MENSAGEM</button>
+
+            <p class="formulario-retorno" id="retornoContato"></p>
+        </form>
+    </section>
+
+    <!-- FAQ -->
+    <section class="secao secao-faq" id="faq">
+        <div class="titulo-secao">
+            <h2>Perguntas frequentes</h2>
+        </div>
+
+        <img class="ornamento" src="../Imagens/OIP.jpg" alt="" aria-hidden="true">
+
+        <div class="faq">
+            <div class="pergunta">
+                <h3>Como acompanhar meu pedido?</h3>
+                <p>Você recebe o código de rastreio por e-mail e WhatsApp assim que o pedido é postado. Com ele, acompanha tudo no site da transportadora.</p>
+            </div>
+
+            <div class="pergunta">
+                <h3>Qual o prazo de entrega?</h3>
+                <p>Nosso prazo médio é de 3 a 7 dias úteis, com postagem em até 24h úteis após a confirmação do pagamento.</p>
+            </div>
+
+            <div class="pergunta">
+                <h3>Posso trocar um produto?</h3>
+                <p>Sim. Você pode solicitar troca em até 7 dias após o recebimento, sem custo, desde que a peça esteja sem uso e com etiqueta.</p>
+            </div>
+
+            <div class="pergunta">
+                <h3>Quais formas de pagamento aceitam?</h3>
+                <p>Aceitamos cartão de crédito em até 3x sem juros, PIX com 5% de desconto e boleto bancário.</p>
+            </div>
+
+            <div class="pergunta">
+                <h3>Como usar um cupom de desconto?</h3>
+                <p>Na página da sacola, digite o cupom (ex.: SOLUR10) no campo "Cupom de desconto" e clique em aplicar. O valor é abatido na hora.</p>
+            </div>
+
+            <div class="pergunta">
+                <h3>Como entrar em contato com a loja?</h3>
+                <p>Pelo formulário acima, pelo WhatsApp (11) 90000-0000 ou pelo e-mail contato@solur.com.br.</p>
+            </div>
+        </div>
+
+        <p class="faq-vazia" id="faqVazia" hidden>Nenhuma pergunta encontrada. Fale com a gente pelo formulário.</p>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <div class="rodape-grade">
+            <div class="rodape-coluna">
+                <img class="rodape-logo" src="../Imagens/WhatsApp Image 2026-05-28 at 08.02.10.jpeg" alt="SOLUR">
+                <p>
+                    Moda dark, goth e streetwear com identidade.
+                    Projeto desenvolvido nas aulas de Desenvolvimento de Sistemas.
+                </p>
+            </div>
+
+            <div class="rodape-coluna">
+                <h3>Navegação</h3>
+                <ul>
+                    <li><a href="../Página de Início/inicio.html">Início</a></li>
+                    <li><a href="../Página de Produtos/produtos.html">Produtos</a></li>
+                    <li><a href="../Página de Promoções/promocoes.html">Promoções</a></li>
+                    <li><a href="../Página de Carrinho/carrinho.html">Minha sacola</a></li>
+                </ul>
+            </div>
+
+            <div class="rodape-coluna">
+                <h3>Ajuda</h3>
+                <ul>
+                    <li><a href="../Página de Contatos/contato.html">Fale conosco</a></li>
+                    <li><a href="#faq">Perguntas frequentes</a></li>
+                    <li><a href="#faq">Trocas e devoluções</a></li>
+                </ul>
+            </div>
+
+            <div class="rodape-coluna">
+                <h3>Atendimento</h3>
+                <p>
+                    Segunda a sexta, das 9h às 18h<br>
+                    contato@solur.com.br<br>
+                    WhatsApp (11) 90000-0000
+                </p>
+            </div>
+        </div>
+
+        <div class="rodape-base">
+            <p>
+                © <span data-ano>2026</span> SOLUR — Escola Professor João Prado Margarido
+                • Projeto escolar, sem fins comerciais.
+            </p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/dados.js"></script>
+    <script src="../assets/js/carrinho.js"></script>
+    <script src="../assets/js/global.js"></script>
+    <script src="contato.js"></script>
+</body>
+
+</html>
